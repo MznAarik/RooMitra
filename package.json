@@ -1,0 +1,11 @@
+{
+  "name": "cozzyrooms",
+  "description": "Full-stack project with Laravel backend and NextJS frontend",
+  "scripts": {
+    "dev": "npx concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "build": "npm run build --prefix frontend",
+    "install-all": "npm install --prefix frontend && cd backend && composer install",
+    "start-frontend": "npm run dev --prefix frontend",
+    "start-backend": "cd backend && php artisan serve"
+  }
+}
