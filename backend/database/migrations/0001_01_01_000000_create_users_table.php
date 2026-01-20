@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password',255);
             $table->string('phoneno',20);
             $table->string('image_url')->nullable();
+            $table->string('role')->default('user');
             $table->softDeletes();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
