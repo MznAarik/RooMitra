@@ -40,7 +40,7 @@ export default function LoginButton() {
                 <br />
                 <button
                     onClick={handleLogin}
-                    className="px-4 py-2 ms-100 bg-blue-600 text-white rounded"
+                    className="px-4 py-2 ml-4 bg-blue-600 text-white rounded"
                 >
                     Login
                 </button>
