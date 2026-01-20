@@ -23,19 +23,26 @@ class AuthController extends Controller
         ]);
         try {
             $response = DB::transaction(function () use ($request) {
-                if ($request->role === 'admin' && Auth::user()->role !== 'admin') {
-                    return response()->json([
-                        'status' => 0,
-                        'message' => 'Unauthorized to create admin account!',
-                    ]);
+                $requestedRole = $request->input('role', 'user');
+
+                if ($requestedRole === 'admin') {
+                    $authUser = Auth::user();
+
+                    if (!$authUser || $authUser->role !== 'admin') {
+                        return response()->json([
+                            'status' => 0,
+                            'message' => 'Unauthorized to create admin account!',
+                        ], 403);
+                    }
                 }
+
                 User::create([
                     'name' => $request->name,
                     'email' => $request->email,
                     'password' => $request->password,
                     'phoneno' => $request->phoneno,
                     'image_url' => $request->image_url,
-                    'role' => $request->role,
+                    'role' => $requestedRole,
                     'created_at' => now()
                 ]);
 
