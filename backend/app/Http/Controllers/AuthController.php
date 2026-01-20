@@ -23,7 +23,7 @@ class AuthController extends Controller
         ]);
         try {
             $response = DB::transaction(function () use ($request) {
-                if ($request->role === 'admin' && Auth::user() != 'admin') {
+                if ($request->role === 'admin' && Auth::user()->role !== 'admin') {
                     return response()->json([
                         'status' => 0,
                         'message' => 'Unauthorized to create admin account!',
@@ -88,7 +88,8 @@ class AuthController extends Controller
                 'data' => [
                     'status' => 1,
                     'user' => Auth::user(),
-                    'access_token' => "Bearer-$accessToken",
+                    'token_type' => 'Bearer',
+                    'access_token' => $accessToken,
                 ]
             ]);
 
