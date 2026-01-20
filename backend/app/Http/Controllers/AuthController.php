@@ -70,10 +70,6 @@ class AuthController extends Controller
                 ], 404);
             }
 
-            foreach ($user->tokens as $token) {
-                $token->revoke();
-            }
-
             if (!Auth::attempt($credentials)) {
                 return response()->json([
                     'status' => 0,
@@ -81,7 +77,13 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            $accessToken = $user->createToken('authToken')->accessToken;
+            $authedUser = Auth::user();
+
+            foreach ($authedUser->tokens as $token) {
+                $token->revoke();
+            }
+
+            $accessToken = $authedUser->createToken('authToken')->accessToken;
 
             return response()->json([
                 'message' => 'Login Successful!',
