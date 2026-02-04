@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Typography, Container } from "@mui/material";
 
 export default function HomePage() {
@@ -7,7 +9,7 @@ export default function HomePage() {
       <Typography variant="h3" gutterBottom>
         Welcome to Next + MUI
       </Typography>
-      <Button variant="contained" color="primary" href="/auth/login" className="">
+      <Button variant="contained" color="warning" href="/auth/login" className="">
         Get Started
       </Button>
     </Container>

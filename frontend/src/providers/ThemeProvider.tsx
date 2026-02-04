@@ -2,6 +2,7 @@
 
 import { ThemeProvider as MuiThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import { ReactNode } from "react";
+import "../app/globals.css";
 
 interface ThemeProviderProps {
     children: ReactNode;
