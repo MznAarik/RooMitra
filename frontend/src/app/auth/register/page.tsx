@@ -15,22 +15,19 @@ const RegisterPage = () => {
     };
 
     const [data, setData] = useState<LoginResponse | null>(null);
-    const handleLogin = async () => {
-        try {
-            const data = await login(
-                "admin@gmail.com",
-                "admin@gmail.com"
-            );
-            setData(data);
-            console.log("SUCCESS:", data);
-        } catch (err: unknown) {
-            if (err instanceof Error) {
-                console.error(err.message);
-            } else {
-                console.error(err);
-            }
-        }
-
+    const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        // TODO: Implement registration logic using form data.
+        // Example:
+        // const formData = new FormData(e.currentTarget);
+        // const email = formData.get('email');
+        // const password = formData.get('password');
+        // try {
+        //   const data = await register(email, password);
+        //   setData(data);
+        // } catch (err) {
+        //   console.error(err);
+        // }
     };
 
     return (
